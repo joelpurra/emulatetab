@@ -85,9 +85,9 @@ var JoelPurra = JoelPurra || {};
 		};
 
 		$.extend({
-			emulateTab: function (offset) {
+			emulateTab: function ($from, offset) {
 
-				return namespace.EmulateTab.tab(offset);
+				return namespace.EmulateTab.tab($from, offset);
 			}
 		});
 
