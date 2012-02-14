@@ -4,7 +4,7 @@ A jQuery plugin to emulate tabbing between elements on a page.
 The <kbd>tab</kbd> key is very useful when it comes to navigating webpages. When working with functions that modify or reuse tabbing through elements on a page, the browser's native tabbing logic cannot be called from javascript. This plugin tries to emulate/simulate that browser logic.
 
 ## Demos
-* `example/demo.html`: Simple demo for comparing EmulateTab to your browser.
+* [`example/demo.html`](http://joelpurra.github.com/emulatetab/example/demo.html): Simple demo for comparing EmulateTab to your browser.
 
 ## Usage
 
@@ -32,6 +32,9 @@ Developed to as a part of two other plugins; one to [use <kbd>tab</kbd> to skip 
 
 ## Dependencies
 EmulateTab's only runtime dependencies is [jQuery](http://jquery.com/).
+
+## Browser compatibility
+Should be about as compatible as jQuery is, since most functions depend on jQuery's normalization. You are engouraged to [run the EmulateTab test suite](http://joelpurra.github.com/emulatetab/test/) and then report any issues.
 
 ## Todo
 
