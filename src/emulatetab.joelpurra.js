@@ -23,11 +23,28 @@ var JoelPurra = JoelPurra || {};
 
 	// Private methods
 	{
+		function escapeSelectorName(str)
+		{
+			// Based on http://api.jquery.com/category/selectors/
+			// Still untested
+			return str.replace(/(!"#$%&'\(\)\*\+,\.\/:;<=>\?@\[\]^`\{\|\}~)/g, "\\\\$1");
+		}
+
 		function findNextFocusable($from, offset) {
 
 			var $focusable = $(focusable)
 						.not(":disabled")
-						.not(":hidden");
+						.not(":hidden")
+						.not("a[href]:empty");
+
+			if($from[0].tagName === "INPUT"
+				&& $from[0].type === "radio"
+				&& $from[0].name !== "")
+				{
+					$focusable = $focusable
+						.not("input[type=radio][name="+ escapeSelectorName($from[0].name) +"]")
+						.add($from);
+				}
 
 			var currentIndex = $focusable.index($from);
 

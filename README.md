@@ -20,9 +20,9 @@ $(selector).emulateTab(-1);
 ```
 
 ### Tabbable elements
-Elements that can be focused/tabbed include `<input>`, `<select>`, `<textarea>`, `<button>` and `<a href="...">` (the `href` attribute must exist).
+Elements that can be focused/tabbed include `<input>`, `<select>`, `<textarea>`, `<button>` and `<a href="...">` (the `href` attribute must exist and the tag must have some contents).
 
-Note that `<input type="hidden" />`, `<a>` (without `href`), `disabled="disabled"` or `display: none;` elements cannot be focused/tabbed to.
+Note that `<input type="hidden" />`, `<a>` (without `href` or empty contents), `disabled="disabled"` or `display: none;` elements cannot be focused/tabbed to.
 
 ## Original purpose
 Developed to as a part of two other plugins; one to [use <kbd>tab</kbd> to skip over less used form fields](https://github.com/joelpurra/skipontab), the other to [use the <kbd>+</kbd> on the keypad as a new tab key](https://github.com/joelpurra/plusastab). Both plugins were used in a web application for registering and administering letters.
