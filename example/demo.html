@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EmulateTab demo</title>
+	<style>
+		form input, form textarea, form select, form button
+		{
+			display: block;
+		}
+		
+		input, textarea, select
+		{
+			min-width: 20em;
+		}
+		
+		input[type=radio], input[type=checkbox]
+		{
+			min-width: 2em;
+		}
+		
+		input[type=radio], input[type=checkbox]
+		{
+			display: inline;
+		}
+		
+		kbd
+		{
+			border-width: 2px;
+			border-style: outset;
+			padding: 1px;
+			background-color: #eee;
+		}
+		
+		.border
+		{
+			padding: 0.3em;
+			border: 1px dotted #999;
+		}
+	</style>
+</head>
+<body>
+	<h1>
+		<a href="https://github.com/joelpurra/emulatetab">EmulateTab</a> demo</h1>
+	<p>
+		Sometimes it can be useful to programatically emulate/simulate the effect of pressing
+		the <kbd>tab</kbd> key. Examples include <a href="https://github.com/joelpurra/skipontab">
+			using <kbd>tab</kbd> to skip over less used form fields</a>, another to <a href="https://github.com/joelpurra/plusastab">
+				use the <kbd>+</kbd> on the keypad as a new tab key</a>.
+	</p>
+	<p>
+		This demo allows comparing EmulateTab to the browser you are using. Try to <kbd>tab</kbd>
+		and <kbd>shift</kbd>-<kbd>tab</kbd> through the fields. Then start the emulated
+		tabbing that runs on a timer.
+	</p>
+	<p>
+		Note that using the <em>mouse</em> to click on a button, checkbox or radio button
+		may cause the browser to <em>unfocus</em> (blur) the current selection. Since there
+		is no selected element, tabbing would then restart at the top of the page.
+	</p>
+	<fieldset>
+		<legend>Demo controls</legend>
+		<button id="enable-auto-navigation" type="button" autofocus="autofocus">
+			Enable auto navigation</button>
+		<button id="disable-auto-navigation" type="button">
+			Disable auto navigation</button>
+		<label>
+			<input id="auto-navigation-reverse" type="checkbox" />
+			Reverse</label>
+		<label>
+			<input id="auto-navigation-interval" type="number" min="0" max="2000" step="10" />
+			Interval</label>
+	</fieldset>
+	<form>
+	<fieldset>
+		<legend>A bunch of random form elements for demo purposes</legend>
+		<input type="text" value="Textbox" />
+		<textarea>Textarea</textarea>
+		<a href="http://joelpurra.se/">Joel Purra</a>
+		<input type="submit" value="Input type submit" />
+		<ol>
+			<li>
+				<label>
+					<input type="checkbox" />
+					Checkbox</label></li>
+			<li>
+				<label>
+					<input type="checkbox" />
+					Another textbox</label></li>
+		</ol>
+		<select>
+			<option>Drop down with two options</option>
+			<option>Another option</option>
+		</select>
+		<a>Anchors without <code>href</code> are always skipped by the browser</a>
+		<div class="border">
+			<button type="submit">
+				Inside container</button>
+			<div class="border">
+				<button type="submit">
+					Inside subcontainer to container</button>
+			</div>
+			<button type="submit">
+				Inside container</button>
+		</div>
+		<select multiple="multiple">
+			<option>First</option>
+			<option>Second</option>
+			<option>Third</option>
+		</select>
+		<fieldset>
+			<legend>First part of radio group 1</legend>
+			<label>
+				<input type="radio" name="radiogroup1" />
+				First</label>
+			<label>
+				<input type="radio" name="radiogroup1" />
+				Second</label>
+			<label>
+				<input type="radio" name="radiogroup1" />
+				Third</label>
+		</fieldset>
+		<input type="text" value="Textbox" />
+		<fieldset>
+			<legend>Second part of radio group 1</legend>
+			<label>
+				<input type="radio" name="radiogroup1" />
+				Fourth</label>
+			<label>
+				<input type="radio" name="radiogroup1" />
+				Fifth</label>
+			<label>
+				<input type="radio" name="radiogroup1" />
+				Sixth</label>
+		</fieldset>
+		<input type="text" value="Textbox" />
+		<fieldset>
+			<legend>Radio group 2 mixed with the third part of radio group 1</legend>
+			<label>
+				<input type="radio" name="radiogroup2" />
+				First</label>
+			<label>
+				<input type="radio" name="radiogroup1" />
+				Seventh</label>
+			<label>
+				<input type="radio" name="radiogroup2" />
+				Third</label>
+		</fieldset>
+		<button id="click-to-add-checkbox" type="button">
+			Click to add checkbox after button</button>
+		<p>
+			Tabbing past here will usually put focus in the address bar of the browser, but
+			the emulation will put focus at the top of the page. The emulation is not overriding
+			default behavior, it is extending it. Also, javascript cannot control focus of the
+			browser address
+		</p>
+	</fieldset>
+	</form>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="../src/emulatetab.joelpurra.js"></script>
+	<script>
+//<![CDATA[
+
+		var 
+			intervalId,
+			defaultInterval = 500;
+
+		$("#auto-navigation-interval")
+			.val(defaultInterval);
+
+		$("form")
+			.submit(simulateSubmitting);
+
+		$("#enable-auto-navigation")
+			.click(enableAutoNavigation);
+
+		$("#disable-auto-navigation")
+			.click(disableAutoNavigation);
+
+		$("#click-to-add-checkbox")
+			.click(addCheckboxAfter);
+
+		function autoNavigate()
+		{
+			var reverse = $("#auto-navigation-reverse").is(":checked");
+
+			$.emulateTab(reverse ? -1 : +1);
+		}
+
+		function enableAutoNavigation()
+		{
+			disableAutoNavigation();
+
+			var interval = parseInt($("#auto-navigation-interval").val());
+
+			if (!$.isNumeric(interval))
+			{
+				interval = defaultInterval;
+			}
+
+			intervalId = setInterval(autoNavigate, interval);
+		}
+
+		function disableAutoNavigation()
+		{
+			clearInterval(intervalId);
+		}
+
+		function addCheckboxAfter(event)
+		{
+			var $target = $(event.target);
+
+			var $checkbox = $('<input />')
+								.attr("type", "checkbox");
+
+			$checkbox.insertAfter($target);
+
+			$target.focus();
+		}
+
+		function simulateSubmitting(event)
+		{
+			event.preventDefault();
+
+			if (confirm("Simulating that the form has been submitted.\n\nWould you like to reload the page?"))
+			{
+				location.reload();
+			}
+
+			return false;
+		}
+//]]>
+	</script>
+</body>
+</html>
