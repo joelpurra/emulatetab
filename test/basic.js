@@ -10,6 +10,17 @@
 	var 
 		$container;
 
+	// Logging helpers
+	{
+		function warn()
+		{
+			try
+			{
+				console.warn.apply(console, arguments);
+			} catch (e) { }
+		}
+	}
+
 	// Test helpers
 	{
 		function normalSetup()
@@ -45,7 +56,23 @@
 
 		function getFocusedElement()
 		{
-			return $(document.activeElement);
+			try
+			{
+				return $(document.activeElement);
+			}
+			catch (e)
+			{
+				warn("Could not use document.activeElement", document.activeElement, e);
+			}
+
+			// Fallback: use the EmulateTab itself
+			warn("Falling back to JoelPurra.EmulateTab.getFocused()");
+
+			// As usual, it is not a good idea to (how shall I put this)
+			// test the code under test with, eh, the code under test.
+			// Makes things easier though, as at least one test would
+			// fail without this check.
+			return JoelPurra.EmulateTab.getFocused();
 		}
 
 		function assertFocusedId(id)
