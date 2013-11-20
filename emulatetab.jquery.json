@@ -1,0 +1,40 @@
+{
+    "name": "emulatetab",
+    "title": "EmulateTab",
+    "description": "A jQuery plugin to emulate tabbing between elements on a page.",
+    "keywords": [
+        "emulate",
+        "emulation",
+        "tab",
+        "tabbing",
+        "usability",
+        "focus",
+        "keyboard",
+        "shortcuts",
+        "tabbable",
+        "form",
+        "forms",
+        "input",
+        "tabindex"
+    ],
+    "version": "0.0.0",
+    "author": {
+        "name": "The Swedish Post and Telecom Authority (PTS)",
+        "url": "http://pts.se/"
+    },
+    "maintainers": [{
+        "name": "Joel Purra",
+        "url": "http://joelpurra.com/"
+    }],
+    "licenses": [{
+        "type": "BSD-3-Clause",
+        "url": "https://github.com/joelpurra/emulatetab/blob/master/LICENSE"
+    }],
+    "homepage": "http://joelpurra.github.com/emulatetab",
+    "docs": "http://joelpurra.github.com/emulatetab",
+    "bugs": "https://github.com/joelpurra/emulatetab/issues",
+    "demo": "http://joelpurra.github.com/emulatetab/example/demo.html",
+    "dependencies": {
+        "jquery": ">=1.7"
+    }
+}
