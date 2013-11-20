@@ -24,6 +24,7 @@
     },
     "maintainers": [{
         "name": "Joel Purra",
+        "email": "code+jquery@joelpurra.com",
         "url": "http://joelpurra.com/"
     }],
     "licenses": [{
