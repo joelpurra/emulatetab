@@ -1,5 +1,5 @@
 {
-    "name": "emulatetab",
+    "name": "jquery-emulatetab",
     "version": "0.2.1",
     "dependencies": {
         "jquery": "^1.7.0",
