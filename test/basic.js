@@ -7,7 +7,7 @@
 
 (function ($)
 {
-	var 
+	var
 		$container;
 
 	// Logging helpers
@@ -162,7 +162,7 @@
 		test("Object exists", 2, function ()
 		{
 			notStrictEqual(typeof (JoelPurra.EmulateTab), "undefined", "JoelPurra.EmulateTab is undefined.");
-			strictEqual(typeof (JoelPurra.EmulateTab), "function", "JoelPurra.EmulateTab is not a function.");
+			strictEqual(typeof (JoelPurra.EmulateTab), "object", "JoelPurra.EmulateTab is not an object.");
 		});
 
 	} ());

@@ -3,182 +3,159 @@
 // Set up namespace, if needed
 var JoelPurra = JoelPurra || {};
 
-(function ($, namespace)
-{
+(function(document, $, namespace, pluginName) {
+    "use strict";
 
-	namespace.EmulateTab = function ()
-	{
-	};
+    var eventNamespace = "." + pluginName,
 
-	var eventNamespace = ".EmulateTab";
+        // TODO: get code for :focusable, :tabbable from jQuery UI?
+        focusable = ":input, a[href]",
 
-	// TODO: get code for :focusable, :tabbable from jQuery UI?
-	var focusable = ":input, a[href]";
+        // Keep a reference to the last focused element, use as a last resort.
+        lastFocusedElement = null,
 
-	// Keep a reference to the last focused element, use as a last resort.
-	var lastFocusedElement = null;
+        // Private methods
+        internal = {
+            escapeSelectorName: function(str) {
+                // Based on http://api.jquery.com/category/selectors/
+                // Still untested
+                return str.replace(/(!"#$%&'\(\)\*\+,\.\/:;<=>\?@\[\]^`\{\|\}~)/g, "\\\\$1");
+            },
 
-	// Private methods
-	{
-		function escapeSelectorName(str) {
+            findNextFocusable: function($from, offset) {
+                var $focusable = $(focusable)
+                    .not(":disabled")
+                    .not(":hidden")
+                    .not("a[href]:empty");
 
-			// Based on http://api.jquery.com/category/selectors/
-			// Still untested
-			return str.replace(/(!"#$%&'\(\)\*\+,\.\/:;<=>\?@\[\]^`\{\|\}~)/g, "\\\\$1");
-		}
+                if ($from[0].tagName === "INPUT" && $from[0].type === "radio" && $from[0].name !== "") {
+                    var name = internal.escapeSelectorName($from[0].name);
 
-		function findNextFocusable($from, offset) {
+                    $focusable = $focusable
+                        .not("input[type=radio][name=" + name + "]")
+                        .add($from);
+                }
 
-			var $focusable = $(focusable)
-						.not(":disabled")
-						.not(":hidden")
-						.not("a[href]:empty");
+                var currentIndex = $focusable.index($from);
 
-			if ($from[0].tagName === "INPUT"
-				&& $from[0].type === "radio"
-				&& $from[0].name !== "") {
+                var nextIndex = (currentIndex + offset) % $focusable.length;
 
-				var name = escapeSelectorName($from[0].name);
+                if (nextIndex <= -1) {
+                    nextIndex = $focusable.length + nextIndex;
+                }
 
-				$focusable = $focusable
-						.not("input[type=radio][name=" + name + "]")
-						.add($from);
-			}
+                var $next = $focusable.eq(nextIndex);
 
-			var currentIndex = $focusable.index($from);
+                return $next;
+            },
 
-			var nextIndex = (currentIndex + offset) % $focusable.length;
+            focusInElement: function(event) {
+                lastFocusedElement = event.target;
+            },
 
-			if (nextIndex <= -1) {
+            tryGetElementAsNonEmptyJQueryObject: function(selector) {
+                try {
+                    var $element = $(selector);
 
-				nextIndex = $focusable.length + nextIndex;
-			}
+                    if ( !! $element && $element.size() !== 0) {
+                        return $element;
+                    }
+                } catch (e) {
+                    // Could not use element. Do nothing.
+                }
 
-			var $next = $focusable.eq(nextIndex);
+                return null;
+            },
 
-			return $next;
-		}
+            // Fix for EmulateTab Issue #2
+            // https://github.com/joelpurra/emulatetab/issues/2
+            // Combined function to get the focused element, trying as long as possible.
+            // Extra work done trying to avoid problems with security features around
+            // <input type="file" /> in Firefox (tested using 10.0.1).
+            // http://stackoverflow.com/questions/9301310/focus-returns-no-element-for-input-type-file-in-firefox
+            // Problem: http://jsfiddle.net/joelpurra/bzsv7/
+            // Fixed:   http://jsfiddle.net/joelpurra/bzsv7/2/
 
-		function focusInElement(event) {
+            getFocusedElement: function() {
+                // 1. Try the well-known, recommended method first.
+                //
+                // 2. Fall back to a fast method that might fail.
+                // Known to fail for Firefox (tested using 10.0.1) with
+                // Permission denied to access property "nodeType".
+                //
+                // 3. As a last resort, use the last known focused element.
+                // Has not been tested enough to be sure it works as expected
+                // in all browsers and scenarios.
+                //
+                // 4. Empty fallback
+                var $focused = internal.tryGetElementAsNonEmptyJQueryObject(":focus") || internal.tryGetElementAsNonEmptyJQueryObject(document.activeElement) || internal.tryGetElementAsNonEmptyJQueryObject(lastFocusedElement) || $();
 
-			lastFocusedElement = event.target;
-		}
+                return $focused;
+            },
 
-		function tryGetElementAsNonEmptyJQueryObject(selector) {
+            emulateTabbing: function($from, offset) {
+                var $next = internal.findNextFocusable($from, offset);
 
-			try {
+                $next.focus();
+            },
 
-				var $element = $(selector);
+            initializeAtLoad: function() {
+                // Start listener that keep track of the last focused element.
+                $(document)
+                    .on("focusin" + eventNamespace, internal.focusInElement);
+            }
+        },
 
-				if (!!$element
-					&& $element.size() !== 0) {
+        plugin = {
+            tab: function($from, offset) {
+                // Tab from focused element with offset, .tab(-1)
+                if ($.isNumeric($from)) {
+                    offset = $from;
+                    $from = undefined;
+                }
 
-					return $element;
-				}
+                $from = $from || plugin.getFocused();
 
-			} catch (e) {
+                offset = offset || +1;
 
-				// Could not use element. Do nothing.
-			}
+                internal.emulateTabbing($from, offset);
+            },
 
-			return null;
-		}
+            forwardTab: function($from) {
+                return plugin.tab($from, +1);
+            },
 
-		// Fix for EmulateTab Issue #2
-		// https://github.com/joelpurra/emulatetab/issues/2
-		// Combined function to get the focused element, trying as long as possible.
-		// Extra work done trying to avoid problems with security features around
-		// <input type="file" /> in Firefox (tested using 10.0.1).
-		// http://stackoverflow.com/questions/9301310/focus-returns-no-element-for-input-type-file-in-firefox
-		// Problem: http://jsfiddle.net/joelpurra/bzsv7/
-		// Fixed:   http://jsfiddle.net/joelpurra/bzsv7/2/
-		function getFocusedElement() {
+            reverseTab: function($from) {
+                return plugin.tab($from, -1);
+            },
 
-			var $focused = null
+            getFocused: function() {
+                return internal.getFocusedElement();
+            }
+        },
 
-				// Try the well-known, recommended method first.
-				|| tryGetElementAsNonEmptyJQueryObject(':focus')
+        installJQueryExtensions = function() {
+            $.extend({
+                emulateTab: function($from, offset) {
+                    return plugin.tab($from, offset);
+                }
+            });
 
-				// Fall back to a fast method that might fail.
-				// Known to fail for Firefox (tested using 10.0.1) with
-				// Permission denied to access property 'nodeType'.
-				|| tryGetElementAsNonEmptyJQueryObject(document.activeElement)
+            $.fn.extend({
+                emulateTab: function(offset) {
+                    return plugin.tab(this, offset);
+                }
+            });
+        },
 
-				// As a last resort, use the last known focused element.
-				// Has not been tested enough to be sure it works as expected
-				// in all browsers and scenarios.
-				|| tryGetElementAsNonEmptyJQueryObject(lastFocusedElement)
-				
-				// Empty fallback
-				|| $();
+        init = function() {
+            namespace[pluginName] = plugin;
 
-			return $focused;
-		}
+            installJQueryExtensions();
 
-		function emulateTabbing($from, offset) {
+            // EmulateTab initializes listener(s) when jQuery is ready
+            $(internal.initializeAtLoad);
+        };
 
-			var $next = findNextFocusable($from, offset);
-
-			$next.focus();
-		}
-
-		function initializeAtLoad() {
-
-			// Start listener that keep track of the last focused element.
-			$(document)
-				.on("focusin" + eventNamespace, focusInElement);
-		}
-	}
-
-	// Public functions
-	{
-		namespace.EmulateTab.forwardTab = function ($from) {
-
-			return namespace.EmulateTab.tab($from, +1);
-		};
-
-		namespace.EmulateTab.reverseTab = function ($from) {
-
-			return namespace.EmulateTab.tab($from, -1);
-		};
-
-		namespace.EmulateTab.tab = function ($from, offset) {
-
-			// Tab from focused element with offset, .tab(-1)
-			if ($.isNumeric($from)) {
-
-				offset = $from;
-				$from = undefined;
-			}
-
-			$from = $from || namespace.EmulateTab.getFocused();
-
-			offset = offset || +1;
-
-			emulateTabbing($from, offset);
-		};
-
-		namespace.EmulateTab.getFocused = function () {
-
-			return getFocusedElement();
-		};
-
-		$.extend({
-			emulateTab: function ($from, offset) {
-
-				return namespace.EmulateTab.tab($from, offset);
-			}
-		});
-
-		$.fn.extend({
-			emulateTab: function (offset) {
-
-				return namespace.EmulateTab.tab(this, offset);
-			}
-		});
-	}
-
-	// EmulateTab initializes listener(s) when jQuery is ready
-	$(initializeAtLoad);
-
-} (jQuery, JoelPurra));
+    init();
+}(document, jQuery, JoelPurra, "EmulateTab"));
