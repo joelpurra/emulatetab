@@ -1,5 +1,4 @@
-/*jslint vars: true, white: true, browser: true*/
-/*global jQuery*/
+/*global document:true, jQuery:true */
 
 // Set up namespace, if needed
 var JoelPurra = JoelPurra || {};
