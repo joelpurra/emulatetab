@@ -5,11 +5,31 @@ The <kbd>tab</kbd> key is very useful when it comes to navigating webpages. When
 
 ## Get it
 
+Download the script, and include it in your HTML page after the jQuery script tag.
+
+### Raw
+[emulatetab.joelpurra.js](https://raw.github.com/joelpurra/emulatetab/master/src/emulatetab.joelpurra.js)
+
+### [Bower](http://bower.io/)
+
+```bash
+bower install jquery-emulatetab
+```
+
+### [NPM](https://npmjs.org/)
+
+```bash
+bower install jquery-emulatetab
+```
+
+### [Git](http://git-scm.com/)
 To include dependencies, make sure to get the submodules too.
 
 ```
 git clone --recursive git://github.com/joelpurra/emulatetab.git
 ```
+
+
 ## Demos
 * [`example/demo.html`](http://joelpurra.github.com/emulatetab/example/demo.html): Simple demo for comparing EmulateTab to your browser.
 
