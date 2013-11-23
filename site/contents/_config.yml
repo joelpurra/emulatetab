@@ -1,0 +1,35 @@
+#
+# jekyll-theme-demivolte 1.0.0
+# http://joelpurra.github.io/jekyll-theme-demivolte
+# Copyright (c) 2012, 2013, Joel Purra <http://joelpurra.com/> All rights reserved.
+# Released under the WTFPL.
+#
+# A very simple Jekyll theme with the specific purpose of allowing for basic example/demo pages projects on github's gh-pages.
+#
+# Remember to change config value in _config.yml after cloning the theme.
+#
+
+
+# Used in titles, headers and links to your project url.
+projectName: EmulateTab
+
+# Use this for the gh-pages root of your project.
+projectUrl: http://joelpurra.github.com/emulatetab
+
+# The github project page URL.
+projectGithub: https://github.com/joelpurra/emulatetab
+
+
+# If you don't change the Google Analytics stuff, someone else will be able to track your users.
+# Set blank values if you don't want Google Analytics tracking.
+googleAnalyticsAccountId: UA-29171100-1
+googleAnalyticsAccountDomain: joelpurra.github.io
+
+# You might want to exclude some files from your jekyll site.
+#exclude: ["Gruntfile.js", "package.json", "node_modules"]
+
+# Per page YAML front matter options.
+#---
+#layout: example
+#title: Some descriptive page title
+#---
