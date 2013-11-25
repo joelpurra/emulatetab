@@ -179,6 +179,7 @@
                     commitFiles: '<%= bump.options.files %>',
                     tagName: 'v%VERSION%',
                     tagMessage: 'v%VERSION%',
+                    pushTo: 'origin',
                     gitDescribeOptions: '--tags --always --dirty=-SNAPSHOT'
                 }
             },
