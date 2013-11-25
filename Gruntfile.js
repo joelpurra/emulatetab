@@ -128,6 +128,7 @@
                         'bower_components/qunit/qunit/qunit.js',
                         'bower_components/jquery/jquery.js',
                         'dist/**',
+                        'src/**',
                         'example/**',
                         'test/**'
                     ],
