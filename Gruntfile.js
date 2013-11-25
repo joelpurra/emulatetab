@@ -175,13 +175,10 @@
                 options: {
                     files: ['package.json', 'bower.json', 'emulatetab.jquery.json', 'composer.json', 'component.json'],
                     updateConfigs: ['pkg'],
-                    commit: false,
                     commitMessage: 'v%VERSION%',
                     commitFiles: '<%= bump.options.files %>', // '-a' for all files
-                    createTag: false,
                     tagName: 'v%VERSION%',
                     tagMessage: 'v%VERSION%',
-                    push: false,
                     gitDescribeOptions: '--tags --always --dirty=-SNAPSHOT' // options to use with '$ git describe'
                 }
             },
