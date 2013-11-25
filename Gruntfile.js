@@ -208,16 +208,16 @@
                             message: 'Bump version from ' + '<%= pkg.version %>'.cyan + ' to:',
                             choices: [{
                                 value: 'build',
-                                name: 'Build: <%= pkg.version %>-? \t Unstable, betas, and release candidates.'
+                                name: 'Build: ' + '<%= pkg.version %>-?'.yellow + ' \t Unstable, betas, and release candidates.'
                             }, {
                                 value: 'patch',
-                                name: 'Patch: <%= semver.inc(pkg.version, "patch") %> \t Backwards-compatible bug fixes.'
+                                name: 'Patch: ' + '<%= semver.inc(pkg.version, "patch") %>'.yellow + ' \t Backwards-compatible bug fixes.'
                             }, {
                                 value: 'minor',
-                                name: 'Minor: <%= semver.inc(pkg.version, "minor") %> \t Add functionality in a backwards-compatible manner.'
+                                name: 'Minor: ' + '<%= semver.inc(pkg.version, "minor") %>'.yellow + ' \t Add functionality in a backwards-compatible manner.'
                             }, {
                                 value: 'major',
-                                name: 'Major: <%= semver.inc(pkg.version, "major") %> \t Incompatible API changes.'
+                                name: 'Major: ' + '<%= semver.inc(pkg.version, "major") %>'.yellow + ' \t Incompatible API changes.'
                             }]
                         }]
                     }
