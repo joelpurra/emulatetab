@@ -64,6 +64,25 @@ EmulateTab's only runtime dependencies is [jQuery](http://jquery.com/).
 ## Browser compatibility
 Should be about as compatible as jQuery is, since most functions depend on jQuery's normalization. You are engouraged to [run the EmulateTab test suite](http://joelpurra.github.com/emulatetab/test/) and then report any issues.
 
+
+
+## Contribute
+In order to contribute to the project, follow these steps.
+
+- Make sure you have installed [git](http://git-scm.com/downloads), [npm](http://nodejs.org/download/), [bower](http://bower.io/#installing-bower), [grunt](http://gruntjs.com/getting-started), [jekyll](http://jekyllrb.com/docs/installation/).
+- [Fork the project on github](https://github.com/joelpurra/emulatetab/fork).
+- `$ git clone --recursive git@github.com:USERNAME/emulatetab.git` where `USERNAME` is your github username.
+- `$ git checkout -b my-own-modification` where `my-own-modification` is a descriptive name for your fix or feature.
+- `$ npm install && bower install`
+- `$ grunt watch`
+- Make your changes to the code. Remember to write new test cases for your changes.
+- `$ git commit`
+- `$ grunt` to make sure all tests pass.
+- `$ git push`
+- Send a pull request on [github.com](https://github.com).
+
+
+
 ## Todo
 
 * [jQuery UI](http://jqueryui.com/) has better code for [`:focusable`](https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.core.js#L210)/[`:tabbable`](https://github.com/jquery/jquery-ui/blob/master/ui/jquery.ui.core.js#L214). Investigate how to implement it.
