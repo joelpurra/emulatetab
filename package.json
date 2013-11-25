@@ -38,6 +38,7 @@
         "grunt-jekyll": "~0.4.0",
         "grunt-jsonlint": "^1.0.4",
         "grunt-micro": "~0.1.0",
+        "grunt-open": "~0.2.2",
         "grunt-prompt": "~0.1.2",
         "semver": "^2.2.1"
     },

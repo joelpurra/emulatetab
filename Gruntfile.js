@@ -158,6 +158,15 @@
                 }
             },
 
+            open: {
+                test: {
+                    path: 'http://localhost:4000/test/'
+                },
+                demo: {
+                    path: 'http://localhost:4000/example/demo.html'
+                }
+            },
+
             checkrepo: {
                 tagged: {
                     tag: {
@@ -193,7 +202,7 @@
 
             watch: {
                 files: '<%= jshint.src %>',
-                tasks: ['default', 'jekyll:serve']
+                tasks: ['default']
             },
 
             prompt: {
@@ -236,11 +245,13 @@
         grunt.loadNpmTasks('grunt-jekyll');
         grunt.loadNpmTasks('grunt-jsonlint');
         grunt.loadNpmTasks('grunt-micro');
+        grunt.loadNpmTasks('grunt-open');
         grunt.loadNpmTasks('grunt-prompt');
 
         grunt.registerTask('build', ['concat']);
         grunt.registerTask('test', ['jsonlint', 'connect', 'qunit', 'jshint', 'jekyll:test']);
         grunt.registerTask('package', ['uglify', 'micro']);
+        grunt.registerTask('serve', ['default', 'copy', 'open', 'jekyll:serve']);
         grunt.registerTask('pre-release', ['default', 'generate-site', 'checkrepo:clean']);
         grunt.registerTask('generate-site', ['copy', 'jekyll:dist']);
         grunt.registerTask('post-release', ['checkrepo:tagged', 'gh-pages']);
