@@ -1,5 +1,5 @@
 /*!
-* EmulateTab v0.2.1
+* EmulateTab v0.2.3
 * http://joelpurra.github.com/emulatetab
 *
 * Copyright © 2011, 2012, 2013 The Swedish Post and Telecom Authority (PTS)
