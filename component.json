@@ -19,9 +19,6 @@
     ],
     "version": "0.2.1",
     "license": "BSD-3-Clause",
-    "homepage": "http://joelpurra.github.com/emulatetab",
-    "docs": "http://joelpurra.github.com/emulatetab",
-    "bugs": "https://github.com/joelpurra/emulatetab/issues",
     "demo": "http://joelpurra.github.com/emulatetab/example/demo.html",
     "dependencies": {
         "components/jquery": "*"
@@ -30,6 +27,5 @@
     "scripts": [
         "dist/emulatetab.joelpurra.js",
         "dist/emulatetab.joelpurra.min.js"
-    ],
-    "remotes": []
+    ]
 }
