@@ -1,4 +1,13 @@
-/*global document:true, jQuery:true */
+/*!
+* EmulateTab v0.2.1
+* http://joelpurra.github.com/emulatetab
+*
+* Copyright © 2011, 2012, 2013 The Swedish Post and Telecom Authority (PTS)
+* Developed by Joel Purra <http://joelpurra.com/>
+* Released under the BSD-3-Clause license.
+*
+* A jQuery plugin to emulate tabbing between elements on a page.
+*/
 
 // Set up namespace, if needed
 var JoelPurra = JoelPurra || {};
