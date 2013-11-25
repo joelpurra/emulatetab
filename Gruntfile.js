@@ -161,13 +161,13 @@
             checkrepo: {
                 tagged: {
                     tag: {
-                        valid: '<%= pkg.version %>', // Check if pkg.version is valid semantic version
+                        valid: '<%= pkg.version %>',
                     },
-                    tagged: false, // Check if last repo commit (HEAD) is not tagged
-                    clean: true, // Check if the repo working directory is clean
+                    tagged: true,
+                    clean: true,
                 },
                 clean: {
-                    clean: true // Check if the repo working directory is clean
+                    clean: true
                 }
             },
 
@@ -176,10 +176,10 @@
                     files: ['package.json', 'bower.json', 'emulatetab.jquery.json', 'composer.json', 'component.json'],
                     updateConfigs: ['pkg'],
                     commitMessage: 'v%VERSION%',
-                    commitFiles: '<%= bump.options.files %>', // '-a' for all files
+                    commitFiles: '<%= bump.options.files %>',
                     tagName: 'v%VERSION%',
                     tagMessage: 'v%VERSION%',
-                    gitDescribeOptions: '--tags --always --dirty=-SNAPSHOT' // options to use with '$ git describe'
+                    gitDescribeOptions: '--tags --always --dirty=-SNAPSHOT'
                 }
             },
 
@@ -187,8 +187,7 @@
                 options: {
                     base: '.grunt/site/'
                 },
-                src: '**/*',
-                git: 'echo'
+                src: '**/*'
             },
 
             watch: {
