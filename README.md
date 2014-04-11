@@ -94,7 +94,7 @@ In order to contribute to the project, follow these steps.
 ## License
 Developed for PTS by Joel Purra <http://joelpurra.se/>
 
-Copyright (c) 2011, 2012, 2013, The Swedish Post and Telecom Authority (PTS)
+Copyright (c) 2011, 2012, 2013, 2014, The Swedish Post and Telecom Authority (PTS)
 All rights reserved.
 
 Released under the BSD license.
