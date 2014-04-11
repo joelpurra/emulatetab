@@ -126,6 +126,7 @@
                     src: [
                         'bower_components/qunit/qunit/qunit.css',
                         'bower_components/qunit/qunit/qunit.js',
+                        'bower_components/console-shim/console-shim.js',
                         'bower_components/jquery/jquery.js',
                         'dist/**',
                         'src/**',
