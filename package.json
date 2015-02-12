@@ -50,6 +50,7 @@
         "url": "https://github.com/joelpurra/emulatetab/blob/master/LICENSE"
     }],
     "keywords": [
+        "jquery-plugin",
         "emulate",
         "emulation",
         "tab",
