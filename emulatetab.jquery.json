@@ -36,6 +36,6 @@
     "bugs": "https://github.com/joelpurra/emulatetab/issues",
     "demo": "http://joelpurra.github.com/emulatetab/example/demo.html",
     "dependencies": {
-        "jquery": ">=1.7.0"
+        "jquery": "^2.0.0"
     }
 }

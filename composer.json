@@ -38,6 +38,6 @@
     },
     "prefer-stable": true,
     "require": {
-        "components/jquery": ">=1.7.0"
+        "components/jquery": "^2.0.0"
     }
 }
