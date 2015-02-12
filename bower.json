@@ -1,6 +1,6 @@
 {
     "name": "jquery-emulatetab",
-    "version": "0.2.6",
+    "version": "0.2.7",
     "dependencies": {
         "console-shim": "*",
         "jquery": "^2.0.0",
