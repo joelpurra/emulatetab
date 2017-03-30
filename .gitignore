@@ -3,3 +3,8 @@ node_modules/
 .grunt/
 dist/
 components/
+
+
+# IDEs / text-editors
+.idea
+*.iml
