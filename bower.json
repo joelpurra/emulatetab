@@ -1,6 +1,6 @@
 {
     "name": "jquery-emulatetab",
-    "version": "0.2.9",
+    "version": "0.2.10",
     "main": "src/emulatetab.joelpurra.js",
     "dependencies": {
         "jquery": "^2.0.0"
