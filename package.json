@@ -1,7 +1,7 @@
 {
 	"name": "jquery-emulatetab",
 	"title": "EmulateTab",
-	"version": "0.2.11",
+	"version": "0.2.12",
 	"description": "A jQuery plugin to emulate tabbing between elements on a page.",
 	"homepage": "https://joelpurra.github.io/emulatetab",
 	"bugs": "https://github.com/joelpurra/emulatetab/issues",
