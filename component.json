@@ -17,7 +17,7 @@
 		"input",
 		"tabindex"
 	],
-	"version": "0.2.10",
+	"version": "0.2.11",
 	"license": "BSD-3-Clause",
 	"demo": "https://joelpurra.github.io/emulatetab/example/demo.html",
 	"dependencies": {
