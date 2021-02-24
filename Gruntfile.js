@@ -107,7 +107,7 @@
             copy: {
                 'jekyll-site-theme': {
                     expand: true,
-                    cwd: 'site/theme/',
+                    cwd: 'site/theme/docs/',
                     src: [
                         '**',
                     ],
