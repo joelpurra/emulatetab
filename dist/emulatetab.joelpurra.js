@@ -1,9 +1,9 @@
 /*!
-* EmulateTab v0.2.8
-* http://joelpurra.github.com/emulatetab
+* EmulateTab v0.2.10
+* https://joelpurra.github.io/emulatetab
 *
-* Copyright © 2011, 2012, 2013, 2014, 2015 The Swedish Post and Telecom Authority (PTS)
-* Developed by Joel Purra <http://joelpurra.com/>
+* Copyright © 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021 The Swedish Post and Telecom Authority (PTS)
+* Developed by Joel Purra <https://joelpurra.com/>
 * Released under the BSD-3-Clause license.
 *
 * A jQuery plugin to emulate tabbing between elements on a page.
