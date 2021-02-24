@@ -1,5 +1,5 @@
 /*!
-* EmulateTab v0.2.10
+* EmulateTab v0.2.11
 * https://joelpurra.github.io/emulatetab
 *
 * Copyright © 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021 The Swedish Post and Telecom Authority (PTS)
@@ -26,7 +26,7 @@ var JoelPurra = JoelPurra || {};
         // Private methods
         internal = {
             escapeSelectorName: function(str) {
-                // Based on http://api.jquery.com/category/selectors/
+                // Based on https://api.jquery.com/category/selectors/
                 // Still untested
                 return str.replace(/(!"#$%&'\(\)\*\+,\.\/:;<=>\?@\[\]^`\{\|\}~)/g, "\\\\$1");
             },
@@ -81,9 +81,9 @@ var JoelPurra = JoelPurra || {};
             // Combined function to get the focused element, trying as long as possible.
             // Extra work done trying to avoid problems with security features around
             // <input type="file" /> in Firefox (tested using 10.0.1).
-            // http://stackoverflow.com/questions/9301310/focus-returns-no-element-for-input-type-file-in-firefox
-            // Problem: http://jsfiddle.net/joelpurra/bzsv7/
-            // Fixed:   http://jsfiddle.net/joelpurra/bzsv7/2/
+            // https://stackoverflow.com/questions/9301310/focus-returns-no-element-for-input-type-file-in-firefox
+            // Problem: https://jsfiddle.net/joelpurra/bzsv7/
+            // Fixed:   https://jsfiddle.net/joelpurra/bzsv7/2/
 
             getFocusedElement: function() {
                 // 1. Try the well-known, recommended method first.
