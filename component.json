@@ -1,31 +1,31 @@
 {
-    "name": "jquery-emulatetab",
-    "repo": "joelpurra/emulatetab",
-    "description": "A jQuery plugin to emulate tabbing between elements on a page.",
-    "keywords": [
-        "emulate",
-        "emulation",
-        "tab",
-        "tabbing",
-        "usability",
-        "focus",
-        "keyboard",
-        "shortcuts",
-        "tabbable",
-        "form",
-        "forms",
-        "input",
-        "tabindex"
-    ],
-    "version": "0.2.9",
-    "license": "BSD-3-Clause",
-    "demo": "http://joelpurra.github.com/emulatetab/example/demo.html",
-    "dependencies": {
-        "components/jquery": "*"
-    },
-    "main": "dist/emulatetab.joelpurra.js",
-    "scripts": [
-        "dist/emulatetab.joelpurra.js",
-        "dist/emulatetab.joelpurra.min.js"
-    ]
+	"name": "jquery-emulatetab",
+	"repo": "joelpurra/emulatetab",
+	"description": "A jQuery plugin to emulate tabbing between elements on a page.",
+	"keywords": [
+		"emulate",
+		"emulation",
+		"tab",
+		"tabbing",
+		"usability",
+		"focus",
+		"keyboard",
+		"shortcuts",
+		"tabbable",
+		"form",
+		"forms",
+		"input",
+		"tabindex"
+	],
+	"version": "0.2.9",
+	"license": "BSD-3-Clause",
+	"demo": "https://joelpurra.github.io/emulatetab/example/demo.html",
+	"dependencies": {
+		"components/jquery": "*"
+	},
+	"main": "dist/emulatetab.joelpurra.js",
+	"scripts": [
+		"dist/emulatetab.joelpurra.js",
+		"dist/emulatetab.joelpurra.min.js"
+	]
 }

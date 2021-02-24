@@ -1,7 +1,7 @@
 #
 # jekyll-theme-demivolte 1.0.0
-# http://joelpurra.github.io/jekyll-theme-demivolte
-# Copyright (c) 2012, 2013, Joel Purra <http://joelpurra.com/> All rights reserved.
+# https://joelpurra.github.io/jekyll-theme-demivolte
+# Copyright (c) 2012, 2013, Joel Purra <https://joelpurra.com/> All rights reserved.
 # Released under the WTFPL.
 #
 # A very simple Jekyll theme with the specific purpose of allowing for basic example/demo pages projects on github's gh-pages.
@@ -14,7 +14,7 @@
 projectName: EmulateTab
 
 # Use this for the gh-pages root of your project.
-projectUrl: http://joelpurra.github.com/emulatetab
+projectUrl: https://joelpurra.github.io/emulatetab
 
 # The github project page URL.
 projectGithub: https://github.com/joelpurra/emulatetab

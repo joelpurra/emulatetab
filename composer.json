@@ -1,43 +1,46 @@
 {
-    "name": "joelpurra/emulatetab",
-    "description": "A jQuery plugin to emulate tabbing between elements on a page.",
-    "type": "library",
-    "keywords": [
-        "emulate",
-        "emulation",
-        "tab",
-        "tabbing",
-        "usability",
-        "focus",
-        "keyboard",
-        "shortcuts",
-        "tabbable",
-        "form",
-        "forms",
-        "input",
-        "tabindex"
-    ],
-    "version": "0.2.9",
-    "authors": [{
-        "name": "The Swedish Post and Telecom Authority (PTS)",
-        "homepage": "http://pts.se/",
-        "role": "owner"
-    }, {
-        "name": "Joel Purra",
-        "email": "code@joelpurra.com",
-        "homepage": "http://joelpurra.com/",
-        "role": "developer"
-    }],
-    "license": [
-        "BSD-3-Clause"
-    ],
-    "homepage": "http://joelpurra.github.com/emulatetab",
-    "support": {
-        "source": "http://joelpurra.github.com/emulatetab",
-        "issues": "https://github.com/joelpurra/emulatetab/issues"
-    },
-    "prefer-stable": true,
-    "require": {
-        "components/jquery": "^2.0.0"
-    }
+	"name": "joelpurra/emulatetab",
+	"description": "A jQuery plugin to emulate tabbing between elements on a page.",
+	"type": "library",
+	"keywords": [
+		"emulate",
+		"emulation",
+		"tab",
+		"tabbing",
+		"usability",
+		"focus",
+		"keyboard",
+		"shortcuts",
+		"tabbable",
+		"form",
+		"forms",
+		"input",
+		"tabindex"
+	],
+	"version": "0.2.9",
+	"authors": [
+		{
+			"name": "The Swedish Post and Telecom Authority (PTS)",
+			"homepage": "https://pts.se/",
+			"role": "owner"
+		},
+		{
+			"name": "Joel Purra",
+			"email": "code@joelpurra.com",
+			"homepage": "https://joelpurra.com/",
+			"role": "developer"
+		}
+	],
+	"license": [
+		"BSD-3-Clause"
+	],
+	"homepage": "https://joelpurra.github.io/emulatetab",
+	"support": {
+		"source": "https://joelpurra.github.io/emulatetab",
+		"issues": "https://github.com/joelpurra/emulatetab/issues"
+	},
+	"prefer-stable": true,
+	"require": {
+		"components/jquery": "^2.0.0"
+	}
 }
