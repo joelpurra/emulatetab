@@ -9,6 +9,9 @@ form input, form textarea, form select, form button {
 input, textarea, select {
     min-width: 20em;
 }
+input[type=image] {
+	min-width: unset;
+}
 input[type=radio], input[type=checkbox] {
     min-width: 2em;
 }
@@ -139,6 +142,11 @@ kbd {
                 <input type="radio" name="radiogroup2" />Third
             </label>
         </fieldset>
+		<fieldset>
+			<legend>An image input</legend>
+			<label>
+				<input type="image" alt="Image from Wikipedia, https://en.wikipedia.org/wiki/Data_URI_scheme#HTML" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==" />Input with an image of a small red dot, which works as a submit button</label>
+		</fieldset>
         <button id="click-to-add-checkbox" type="button">
             Click to add checkbox after button</button>
         <p>

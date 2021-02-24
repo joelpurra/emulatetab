@@ -1,6 +1,6 @@
-/*global document:true, JoelPurra:true, jQuery:true, console:true, module:true, test:true, strictEqual:true, notStrictEqual:true */
+/*global document:true, JoelPurra:true, jQuery:true, console:true, QUnit:true, module:true, test:true, strictEqual:true, notStrictEqual:true */
 
-(function(document, JoelPurra, $, console, module, test, strictEqual, notStrictEqual, undefined) {
+(function(document, JoelPurra, $, console, QUnit, module, test, strictEqual, notStrictEqual, undefined) {
     "use strict";
 
     var $container;
@@ -503,11 +503,17 @@
                 assertTypeTab("<input id='a' type='submit' value='Will receive focus' />");
             });
 
-            test("<input type='image' />", 2, function() {
-				// NOTE: this used to work, but now fails in tests on major browsers.
-				// TODO: fix tabbing to <input type='image' />.
+			// TODO: fix test tabbing to <input type='image' />.
+			// NOTE: manual testing in the demo works well.
+			// NOTE: tabbing test used to work consistently, but now fails in tests on some browsers.
+			// NOTE: tabbing test works on safari 14 on macos 10.14.
+			// NOTE: tabbing test does not work on chrome 88 on macos 10.14, firefox 85 on macos 10.14.
+			// NOTE: Could it be a timing issue with fetching the image, even if it's empty or a data uri?
+			// https://html.spec.whatwg.org/multipage/input.html#image-button-state-(type=image)
+			// > Fetching the image must delay the load event of the element's node document until the task that is queued by the networking task source once the resource has been fetched (defined below) has been run.
+            QUnit.skip("<input type='image' />", 3, function() {
 				// https://en.wikipedia.org/wiki/Data_URI_scheme#HTML
-                assertTypeSkip("<input id='a' type='image' value='Will receive focus' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==' />");
+                assertTypeTab("<input id='a' type='image' value='Will receive focus' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==' />");
             });
 
             test("<input type='reset' />", 3, function() {
@@ -591,4 +597,4 @@
             });
         }());
     }());
-}(document, JoelPurra, jQuery, console, module, test, strictEqual, notStrictEqual));
+}(document, JoelPurra, jQuery, console, QUnit, module, test, strictEqual, notStrictEqual));
